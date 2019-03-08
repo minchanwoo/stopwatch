@@ -5,25 +5,26 @@ import './App.css';
 class App extends Component {
   state = {
     sec: 0,
-    min: 0,
+    min: 5,
   }
 
   componentDidMount() {
 
     setInterval(() => {
-      if(this.state.min < 5) {
-        if(this.state.sec === 15) {
+      if(this.state.min >= 0){
+        if(this.state.sec === 0) {
           this.setState({
-            sec: 0,
-            min: this.state.min + 1,
+            sec: 59,
+            min: this.state.min - 1,
           });
-        } else {
-          this.setState({
-            sec: this.state.sec + 1
-          });
-        }
+          } else {
+            this.setState({
+              sec: this.state.sec - 1
+            });
+          }
       }
-    }, 250);
+      
+    }, 100);
   }
 
   render() {
