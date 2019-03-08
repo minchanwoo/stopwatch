@@ -6,12 +6,13 @@ class App extends Component {
   state = {
     sec: 0,
     min: 5,
+    isPlaying: false,
   }
 
   componentDidMount() {
 
     setInterval(() => {
-      if(this.state.min >= 0){
+      if(this.state.isPlaying){
         if(this.state.sec === 0) {
           this.setState({
             sec: 59,
@@ -32,7 +33,19 @@ class App extends Component {
       <div className="App">
         {this.renderTime(this.state.min)}:
         {this.renderTime(this.state.sec)}초
-      </div>
+
+        <div>
+          {this.state.isPlaying
+          ? 
+          <div>
+            <button onClick={()=> this.setState({isPlaying: false, min: 5, sec: 0})}>STOP</button>
+            <button onClick={()=> this.setState({isPlaying: false})}>PAUSE</button>
+          </div>
+          : 
+          <button onClick={()=> this.setState({isPlaying: true})}>START</button>
+           }
+         </div>
+        </div>
     );
   }
 
