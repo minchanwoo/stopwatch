@@ -10,10 +10,12 @@ class App extends Component {
   componentDidMount() {
 
     setInterval(() => {
-      this.setState({
-        sec: this.state.sec +1
-      });
-    }, 1000);
+      if(this.state.sec < 10) {
+        this.setState({
+          sec: this.state.sec +1
+        });
+      }
+    }, 250);
   }
 
   render() {
