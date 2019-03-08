@@ -11,7 +11,7 @@ class App extends Component {
   componentDidMount() {
 
     setInterval(() => {
-      if(this.state.sec === 10) {
+      if(this.state.sec === 15) {
         this.setState({
           sec: 0,
           min: this.state.min + 1,
@@ -28,9 +28,17 @@ class App extends Component {
     return (
       <div className="App">
         {this.state.min}:
-        {this.state.sec}초
+        {this.renderSec()}초
       </div>
     );
+  }
+
+  renderSec() {
+    if(this.state.sec < 10) {
+      return `0${this.state.sec}`
+    } else {
+      return this.state.sec
+    }
   }
 }
 
